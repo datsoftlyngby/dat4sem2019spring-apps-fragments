@@ -47,20 +47,23 @@ and
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".FirstFragment">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment"
+    >
 
-    <TextView
-            android:id="@+id/first_label"
-            android:text="@string/first_text"
-            android:textAlignment="center"
-            android:textSize="40pt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+  <TextView
+    android:id="@+id/first_label"
+    android:text="@string/first_text"
+    android:textAlignment="center"
+    android:textSize="40pt"
+    android:background="@color/first_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
 
 </FrameLayout>
 ```
@@ -74,34 +77,34 @@ we just have to write (for portrait):
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:context=".StaticFragmentsActivity"
-        >
-    <fragment
-            android:id="@+id/first_fragment"
-            android:name="dk.cphbusiness.applicationwithfragments.FirstFragment"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
-    <fragment
-            android:id="@+id/second_fragment"
-            android:name="dk.cphbusiness.applicationwithfragments.SecondFragment"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
-    <TextView
-            android:id="@+id/textView"
-            android:text="@string/go_landscape_text"
-            android:textAlignment="center"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".StaticFragmentsActivity"
+    >
+  <fragment
+      android:id="@+id/first_fragment"
+      android:name="dk.cphbusiness.applicationwithfragments.FirstFragment"
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      />
+  <fragment
+      android:id="@+id/second_fragment"
+      android:name="dk.cphbusiness.applicationwithfragments.SecondFragment"
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      />
+  <TextView
+      android:id="@+id/textView"
+      android:text="@string/go_landscape_text"
+      android:textAlignment="center"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      />
 </LinearLayout>
 ```
 
@@ -110,40 +113,40 @@ and (for landscape):
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:context=".StaticFragmentsActivity"
-        >
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-        <fragment
-                android:id="@+id/first_fragment"
-                android:name="dk.cphbusiness.applicationwithfragments.FirstFragment"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".StaticFragmentsActivity"
+    >
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      >
+    <fragment
+        android:id="@+id/first_fragment"
+        android:name="dk.cphbusiness.applicationwithfragments.FirstFragment"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         />
-        <fragment
-                android:id="@+id/second_fragment"
-                android:name="dk.cphbusiness.applicationwithfragments.SecondFragment"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+    <fragment
+        android:id="@+id/second_fragment"
+        android:name="dk.cphbusiness.applicationwithfragments.SecondFragment"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         />
-    </LinearLayout>
-    <TextView
-            android:id="@+id/textView"
-            android:text="@string/go_landscape_text"
-            android:textAlignment="center"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-    />
+  </LinearLayout>
+  <TextView
+      android:id="@+id/textView"
+      android:text="@string/go_portrait_text"
+      android:textAlignment="center"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      />
 </LinearLayout>
 ```
 
