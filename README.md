@@ -155,3 +155,84 @@ but `ConstraintLayout`s works fine as well.
 
 ## Dynamic Fragments
 
+Fragments can also be used to change part of (or all af) the GUI
+depending on data.
+
+The fragments are defined the same way as for the static use,
+but the layout of the hosting activity will define a `ViewGroup`
+in which to put the fragment when initialized.
+
+In this case it is a `FrameLayout`:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DynamicFragmentsActivity">
+  <FrameLayout
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintTop_toTopOf="parent"
+      android:id="@+id/toggle_frame"
+      app:layout_constraintBottom_toTopOf="@+id/toggle_button"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp">
+  </FrameLayout>
+  <Button
+      android:id="@+id/toggle_button"
+      android:text="Toggle Fragments"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toggle_frame"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      />
+</android.support.constraint.ConstraintLayout>
+```
+
+```kotlin
+package dk.cphbusiness.applicationwithfragments
+
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_dynamic_fragments.*
+
+class DynamicFragmentsActivity : AppCompatActivity() {
+  val fragments = arrayOf(
+    FirstFragment(), SecondFragment(), ThirdFragment()
+    )
+  var nextIndex = 0
+  val fragmentManager = supportFragmentManager
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_dynamic_fragments)
+    toggleFragment() // Shows the first fragment
+    toggle_button.setOnClickListener {
+      toggleFragment()
+      }
+    }
+
+  fun toggleFragment() {
+    fragmentManager.beginTransaction()
+        .replace(R.id.toggle_frame, fragments[nextIndex])
+        .commit()
+    nextIndex = (nextIndex + 1)%3
+    }
+
+  }
+```
+
+Note that:
+* You should use `supportFragmentManager` (Java: `getSupportFragmentManager()`) and
+  not `fragmentManager` (Java: `getFragmentManager()`),
+  the later is deprecated and dependent on local implementations.
