@@ -10,6 +10,7 @@
             android:text="@string/third_text"
             android:textSize="40pt"
             android:textAlignment="center"
+            android:background="@color/third_color"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />

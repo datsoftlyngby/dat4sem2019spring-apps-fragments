@@ -10,8 +10,9 @@
             android:text="@string/second_text"
             android:textSize="40pt"
             android:textAlignment="center"
+            android:background="@color/second_color"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+    />
 
 </FrameLayout>
