@@ -1,5 +1,6 @@
 package dk.cphbusiness.applicationwithfragments
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
